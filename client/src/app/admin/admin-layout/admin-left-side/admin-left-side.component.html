@@ -1,0 +1,62 @@
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- Sidebar user panel -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/dash-board">
+          <i class="fa fa-dashboard"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li *ngFor="let menu of adminMenu" routerLinkActive="active menu-open" [routerLinkActiveOptions]="{exact: true}" class="treeview">
+        <a routerLink="{{menu.url}}">
+          <i class="fa fa-files-o"></i>
+          <span>{{menu.name}}</span>
+          <span  *ngIf='menu.childrens' class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li *ngFor='let c1 of menu.childrens' routerLinkActive="active menu-open" [routerLinkActiveOptions]="{exact: true}" >
+            <a routerLink="{{c1.url}}">
+              <i class="fa fa-circle-o"></i>
+              <span>{{c1.name}}</span>
+              <span *ngIf='c1.childrens' class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li *ngFor='let c2 of c1.childrens' routerLinkActive="active menu-open" [routerLinkActiveOptions]="{exact: true}" >
+                    <a routerLink="{{c2.url}}">
+                      <i class="fa fa-circle-o"></i>
+                      <span>{{c2.name}}</span>
+                      <span *ngIf='c2.childrens' class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li *ngFor='let c3 of c2.childrens' routerLinkActive="active menu-open" [routerLinkActiveOptions]="{exact: true}">
+                        <a routerLink="{{c3.url}}">
+                          <i class="fa fa-circle-o"></i>{{c3.name}}
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+     
+      
+      <li>
+        <a [routerLink]="" (click)='logout()'>
+          <i class="fa fa-circle-o text-red"></i>
+          <span>Logout</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>

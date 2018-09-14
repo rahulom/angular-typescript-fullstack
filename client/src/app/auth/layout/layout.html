@@ -1,0 +1,10 @@
+<app-auth-header></app-auth-header>
+<main [ngClass]="{'py-0 px-0 my-0 mx-0': specialPage}" class="mx-lg-5">
+    <div class="mt-5">
+            <!--Card content-->
+            <div class="d-sm-flex justify-content-between ">
+                <router-outlet></router-outlet>
+            </div>
+    </div>
+</main>
+<app-auth-footer></app-auth-footer>
